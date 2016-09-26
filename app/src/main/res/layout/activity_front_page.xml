@@ -5,102 +5,231 @@
     android:layout_height="match_parent"
     tools:context="com.adventurousalex.calendargooglemapapiapp.FrontPage">
 
-    <HorizontalScrollView
+    <!-- Will eventually hold the calendar that I create and the Map of the events -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="224dp"
         android:id="@+id/CalMapScroll"
         android:layout_gravity="center_horizontal" >
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#56A6A6">
+            android:background="#56A6A6"
+            android:id="@+id/featureView"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button"
-                android:layout_marginLeft="34dp"
-                android:layout_marginStart="34dp"
-                android:layout_above="@+id/ToDoList"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="34dp"
-                android:paddingTop="20dp"
-                android:paddingRight="15dp" />
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/calendarView" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button2" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Button"
+                    android:id="@+id/button3" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Button"
+                    android:id="@+id/button4" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button4" />
-        </LinearLayout>
+            </LinearLayout>
 
-    </HorizontalScrollView>
+        </HorizontalScrollView>
 
-    <ScrollView
+    </LinearLayout>
+
+    <!-- Will eventually hold all the to do items and their statistics -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/scrollView"
+        android:id="@+id/toDoUsage"
         android:layout_below="@+id/CalMapScroll"
-        android:background="#111111">
+        android:background="#111111"
+        android:layout_height="296dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+        <!-- Allows for more to do items than there is space on the screen -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="#666666"
             android:layout_gravity="center_vertical"
-            android:id="@+id/ToDoList"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" >
+            android:id="@+id/ToDoList">
+            <!--a because the text view in the relative layout would not fill its height-->
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!-- This is a prototype for what my To do Buttons will look like -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button6" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button9" />
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button8" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button5"
-                android:layout_centerVertical="true"
-                android:layout_alignLeft="@+id/scrollView"
-                android:layout_alignStart="@+id/scrollView" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button7" />
-        </LinearLayout>
-    </ScrollView>
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/customborder"
+                    android:layout_alignParentTop="true">
+
+
+                    <TextView android:layout_width="100dp"
+                        android:textSize="25sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Get milk"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+    </LinearLayout>
+
+    <!--This will hold the tool bar that will be used to add buttons as well as change the settings-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ADF253"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toDoUsage">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbar"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </RelativeLayout>
