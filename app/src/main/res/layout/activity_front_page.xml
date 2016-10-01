@@ -21,7 +21,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add todo"
+                    android:id="@+id/toDoAdder"
+                    android:onClick="addToDoItem" />
                 <CalendarView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -29,17 +34,8 @@
                     android:layout_marginRight="16dp"
                     android:id="@+id/calendarView" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Button"
-                    android:id="@+id/button3" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Button"
-                    android:id="@+id/button4" />
+
 
             </LinearLayout>
 
@@ -52,7 +48,6 @@
         android:layout_width="match_parent"
         android:id="@+id/toDoUsage"
         android:layout_below="@+id/CalMapScroll"
-        android:background="#111111"
         android:layout_height="296dp"
         android:orientation="vertical">
 
@@ -60,147 +55,62 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#666666"
+            android:background="#ffffff"
             android:layout_gravity="center_vertical"
             android:id="@+id/ToDoList">
             <!--a because the text view in the relative layout would not fill its height-->
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/toDoListContainer">
+
                 <!-- This is a prototype for what my To do Buttons will look like -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/customborder">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
                     android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
+                    android:layout_alignParentTop="true"
+                    android:clickable="true"
+                    android:onClick="testButton">
 
 
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
+                    <TextView android:layout_width="wrap_content"
+                        android:id="@+id/toDoTitle"
+                        android:textSize="14sp"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
                         android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
+                        android:paddingTop="4dp"
+                        android:text="Get Milk and drop off laundry "
+                        android:ellipsize="end"
+                        android:maxWidth="224dp"
+                        android:maxLines="1"
+                        android:layout_marginLeft="16dp">
+                    </TextView>
+                    <View
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_width="224dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/darker_gray"/>
+                    <View
+                        android:layout_marginLeft="248dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_width="1dp"
+                        android:layout_height="48dp"
+                        android:background="@android:color/darker_gray"/>
+                    <TextView android:layout_width="224dp"
+                        android:textSize="12sp"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:layout_marginStart="16dp"
+                        android:ellipsize="end"
+                        android:paddingBottom="4dp"
+                        android:text="2303 North Marsvhiew Terrace, Magnolia De"
+                        android:layout_marginLeft="16dp"
+                        android:maxLines="1">
                     </TextView>
 
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/customborder"
-                    android:layout_alignParentTop="true">
-
-
-                    <TextView android:layout_width="100dp"
-                        android:textSize="25sp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="Get milk"
-                        >
-                    </TextView>
 
                 </RelativeLayout>
 
