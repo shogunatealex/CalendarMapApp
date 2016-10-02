@@ -1,5 +1,6 @@
 package com.adventurousalex.calendargooglemapapiapp;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,10 +30,24 @@ public class FrontPage extends AppCompatActivity {
     View.OnClickListener buttonListener = (new View.OnClickListener() {
         // this adds the events to the to do item
         public void onClick(View v) {
-            addToDo(v);
+            addToDo("","","");
         }
 
     });
+
+    // is the buttons click activity that starts up a new page, maybe move this to the listener?
+    public void toDoFillerActivity(View v) {
+
+        startActivityForResult(new Intent(FrontPage.this,addToDoActivity.class),272);
+    }
+
+    // collects the data from any other activites that are created
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 272 && resultCode == RESULT_OK){
+            addToDo(data.getStringExtra("title"),data.getStringExtra("location"),data.getStringExtra("duration"));
+        }
+    }
 
     // for the to do list. Not exactly sure if it is going to work. May need to either remove or adjust
     View.OnTouchListener toDoListener = (new View.OnTouchListener() {
@@ -55,7 +70,8 @@ public class FrontPage extends AppCompatActivity {
         });
 
     // this creates a new to do item, still need to make it dynamic and to actually design it more
-    public void addToDo(View v) {
+    public void addToDo(String eventTitle, String location, String duration) {
+
         LinearLayout toDoContainer = (LinearLayout) findViewById(R.id.toDoListContainer);
 
         // For testing programatic layouts
@@ -76,7 +92,7 @@ public class FrontPage extends AppCompatActivity {
 
         //START Creating the title TextView
         TextView title= new TextView(this);
-        title.setText("Get Milk ");
+        title.setText(eventTitle);
         int titleWidth = (int) (100*scale+0.5f);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 
