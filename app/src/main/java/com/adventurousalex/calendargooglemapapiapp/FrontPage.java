@@ -1,6 +1,7 @@
 package com.adventurousalex.calendargooglemapapiapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class FrontPage extends AppCompatActivity {
     View.OnClickListener buttonListener = (new View.OnClickListener() {
         // this adds the events to the to do item
         public void onClick(View v) {
-            addToDo("","","");
+
         }
 
     });
@@ -70,7 +71,7 @@ public class FrontPage extends AppCompatActivity {
         });
 
     // this creates a new to do item, still need to make it dynamic and to actually design it more
-    public void addToDo(String eventTitle, String location, String duration) {
+    public void addToDo(String eventTitle, String eventLocation, String duration) {
 
         LinearLayout toDoContainer = (LinearLayout) findViewById(R.id.toDoListContainer);
 
@@ -93,7 +94,6 @@ public class FrontPage extends AppCompatActivity {
         //START Creating the title TextView
         TextView title= new TextView(this);
         title.setText(eventTitle);
-        int titleWidth = (int) (100*scale+0.5f);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 
         // Defining the layout parameters of the TextView
@@ -109,11 +109,53 @@ public class FrontPage extends AppCompatActivity {
         title.setMaxWidth((int)(224 * scale + 0.5f));
         //FINISH TITLE TextView
 
+        //START LOCATION TextView
+        TextView location = new TextView(this);
+        location.setText(eventLocation);
+        location.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+
+        // definining location layout params
+        RelativeLayout.LayoutParams locationParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT);
+        locationParams.setMargins((int)(16 * scale + 0.5f),0,0,0);
+        location.setLayoutParams(locationParams);
+        location.setPadding(0,0,0,(int)(4 * scale + 0.5f));
+        location.setEllipsize(TextUtils.TruncateAt.END);
+        location.setMaxLines(1);
+        location.setMaxWidth((int)(224 * scale + 0.5f));
+        location.setGravity(Gravity.BOTTOM);
+        //END LOCATION TextView
+
+        //START VERTICAL LINE view
+        View vertLine = new View(this);
+        vertLine.setBackgroundColor(0xffCCCCCC);
+        RelativeLayout.LayoutParams vertLineParams = new RelativeLayout.LayoutParams(
+                (int)(1 * scale + 0.5f),
+                (int)(48 * scale + 0.5f)
+        );
+        vertLineParams.setMargins((int)(248 * scale + 0.5f),(int)(8 * scale + 0.5f),0,(int)(8 * scale + 0.5f));
+        vertLine.setLayoutParams(vertLineParams);
+        //END VERTICAL LINE view
+
+        //START HORIZONTAL LINE view
+        View horizLine = new View(this);
+        horizLine.setBackgroundColor(0xffCCCCCC);
+        RelativeLayout.LayoutParams horizLineParams = new RelativeLayout.LayoutParams(
+                (int)(224 * scale + 0.5f),
+                (int)(1 * scale + 0.5f)
+        );
+        horizLineParams.setMargins((int)(16 * scale + 0.5f),(int)(24 * scale + 0.5f),0,0);
+        horizLine.setLayoutParams(horizLineParams);
+        //END HORIZONTAL LINE view
 
         toDoItem.setClickable(true);
         toDoItem.setOnTouchListener(toDoListener);
         // Adding the TextView to the RelativeLayout as a child
         toDoItem.addView(title);
+        toDoItem.addView(location);
+        toDoItem.addView(vertLine);
+        toDoItem.addView(horizLine);
         toDoContainer.addView(toDoItem);
 
     }
